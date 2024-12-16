@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devinez le Nombre</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Devinez le Nombre</h1>
+    <p class="dedicace">Dédicace spéciale à Josiace, Naruto, Sapa Nazaire. 💥 N'oubliez pas de vous abonner à kingdash !</p>
+    <p>Essayez de deviner le nombre entre <span id="min">1</span> et <span id="max">100</span>.</p>
+    <input type="number" id="guessInput" placeholder="Entrez un nombre..." />
+    <button id="guessButton">Deviner</button>
+    <p id="message">tu vas gagné allé!</p>
+    <button id="restartButton" style="display:none;">Rejouer</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
