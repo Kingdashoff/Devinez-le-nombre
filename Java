@@ -1,0 +1,60 @@
+// script.js
+
+// Variables globales
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
+const maxAttempts = 10;
+
+// Éléments HTML
+const guessInput = document.getElementById("guessInput");
+const guessButton = document.getElementById("guessButton");
+const restartButton = document.getElementById("restartButton");
+const message = document.getElementById("message");
+
+// Fonction de vérification
+guessButton.addEventListener("click", () => {
+  const userGuess = parseInt(guessInput.value);
+
+  if (isNaN(userGuess)) {
+    message.textContent = "Veuillez entrer un nombre valide espèce de con.";
+    return;
+  }
+
+  attempts++;
+
+  if (userGuess === randomNumber) {
+    message.textContent = `Bravo bg ! Vous avez trouvé le nombre en ${attempts} essais. 🌟`;
+    endGame();
+  } else if (userGuess < randomNumber) {
+    message.textContent = `Trop bas ! Tentative ${attempts}/${maxAttempts}.`;
+  } else if (userGuess > randomNumber) {
+    message.textContent = `Trop haut ! Tentative ${attempts}/${maxAttempts}.`;
+  }
+
+  if (attempts >= maxAttempts && userGuess !== randomNumber) {
+    message.textContent = `Dommage ! Le nombre était ${randomNumber}. 🙁`;
+    endGame();
+  }
+
+  guessInput.value = "";
+});
+
+// Fonction pour terminer le jeu
+function endGame() {
+  guessInput.disabled = true;
+  guessButton.style.display = "none";
+  restartButton.style.display = "inline-block";
+  message.style.color = "#007bff"; // Met en avant le message final
+}
+
+// Réinitialiser le jeu
+restartButton.addEventListener("click", () => {
+  randomNumber = Math.floor(Math.random() * 100) + 1;
+  attempts = 0;
+  message.textContent = "Bonne chance !";
+  message.style.color = "#333";
+  guessInput.disabled = false;
+  guessInput.value = "";
+  guessButton.style.display = "inline-block";
+  restartButton.style.display = "none";
+})
